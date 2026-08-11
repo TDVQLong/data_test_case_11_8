@@ -1,0 +1,25 @@
+﻿specVersion: vsf-idp.io/v2
+
+metadata:
+  domain: eshop
+  system: eshopai
+  namespace: eshop
+
+spec:
+  type: website
+  id: webraz
+  name: WebRazor
+  description: WebRazor component for eShopOnContainersAI
+  owners:
+    members:
+      - user: admin@eshop.com
+        role: techlead
+  review:
+    branch: "main"
+  topology:
+    - ref: system:eshop/eshopai
+      reason: This component is part of the eshopai system
+    - ref: component:eshop/webshoppingapigw
+      reason: Depends on webshoppingapigw
+    - ref: component:eshop/webaiapigw
+      reason: Depends on webaiapigw

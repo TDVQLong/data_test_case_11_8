@@ -1,0 +1,25 @@
+﻿specVersion: vsf-idp.io/v2
+
+metadata:
+  domain: eshop
+  system: eshopai
+  namespace: eshop
+
+spec:
+  type: worker
+  id: ordering-backgroundtasks
+  name: Ordering BackgroundTasks
+  description: Ordering BackgroundTasks component for eShopOnContainersAI
+  owners:
+    members:
+      - user: admin@eshop.com
+        role: techlead
+  review:
+    branch: "main"
+  topology:
+    - ref: system:eshop/eshopai
+      reason: This component is part of the eshopai system
+    - ref: component:eshop/sql-data
+      reason: Depends on sql-data
+    - ref: component:eshop/rabbitmq
+      reason: Depends on rabbitmq

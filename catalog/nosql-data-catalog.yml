@@ -1,0 +1,21 @@
+﻿specVersion: vsf-idp.io/v2
+
+metadata:
+  domain: eshop
+  system: eshopai
+  namespace: eshop
+
+spec:
+  type: other
+  id: nosql-data
+  name: NoSQL Data
+  description: NoSQL Data component for eShopOnContainersAI
+  owners:
+    members:
+      - user: admin@eshop.com
+        role: techlead
+  review:
+    branch: "main"
+  topology:
+    - ref: system:eshop/eshopai
+      reason: This component is part of the eshopai system

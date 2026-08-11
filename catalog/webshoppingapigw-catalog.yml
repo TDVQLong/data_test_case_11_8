@@ -1,0 +1,37 @@
+﻿specVersion: vsf-idp.io/v2
+
+metadata:
+  domain: eshop
+  system: eshopai
+  namespace: eshop
+
+spec:
+  type: gateway
+  id: webshoppingapigw
+  name: WebShopping ApiGw
+  description: WebShopping ApiGw component for eShopOnContainersAI
+  owners:
+    members:
+      - user: admin@eshop.com
+        role: techlead
+  review:
+    branch: "main"
+  topology:
+    - ref: system:eshop/eshopai
+      reason: This component is part of the eshopai system
+    - ref: component:eshop/nosql-data
+      reason: Depends on nosql-data
+    - ref: component:eshop/sql-data
+      reason: Depends on sql-data
+    - ref: component:eshop/identity-api
+      reason: Depends on identity-api
+    - ref: component:eshop/rabbitmq
+      reason: Depends on rabbitmq
+    - ref: component:eshop/ordering-api
+      reason: Depends on ordering-api
+    - ref: component:eshop/marketing-api
+      reason: Depends on marketing-api
+    - ref: component:eshop/catalog-api
+      reason: Depends on catalog-api
+    - ref: component:eshop/basket-api
+      reason: Depends on basket-api

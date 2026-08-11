@@ -1,0 +1,33 @@
+﻿specVersion: vsf-idp.io/v2
+
+metadata:
+  domain: eshop
+  system: eshopai
+  namespace: eshop
+
+spec:
+  type: gateway
+  id: webaiapigw
+  name: WebAi ApiGw
+  description: WebAi ApiGw component for eShopOnContainersAI
+  owners:
+    members:
+      - user: admin@eshop.com
+        role: techlead
+  review:
+    branch: "main"
+  topology:
+    - ref: system:eshop/eshopai
+      reason: This component is part of the eshopai system
+    - ref: component:eshop/ai-salesforecasting-mlnet-api
+      reason: Depends on ai-salesforecasting-mlnet-api
+    - ref: component:eshop/catalog-api
+      reason: Depends on catalog-api
+    - ref: component:eshop/ordering-api
+      reason: Depends on ordering-api
+    - ref: component:eshop/ai-productrecommender-azureml-api
+      reason: Depends on ai-productrecommender-azureml-api
+    - ref: component:eshop/ai-productsearchimagebased-tensorflow-api
+      reason: Depends on ai-productsearchimagebased-tensorflow-api
+    - ref: component:eshop/ai-productsearchimagebased-azurecognitiveservices-api
+      reason: Depends on ai-productsearchimagebased-azurecognitiveservices-api

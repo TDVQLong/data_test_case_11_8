@@ -1,0 +1,27 @@
+﻿specVersion: vsf-idp.io/v2
+
+metadata:
+  domain: eshop
+  system: eshopai
+  namespace: eshop
+
+spec:
+  type: service
+  id: basket-api
+  name: Basket API
+  description: Basket API component for eShopOnContainersAI
+  owners:
+    members:
+      - user: admin@eshop.com
+        role: techlead
+  review:
+    branch: "main"
+  topology:
+    - ref: system:eshop/eshopai
+      reason: This component is part of the eshopai system
+    - ref: component:eshop/basket-data
+      reason: Depends on basket-data
+    - ref: component:eshop/identity-api
+      reason: Depends on identity-api
+    - ref: component:eshop/rabbitmq
+      reason: Depends on rabbitmq
