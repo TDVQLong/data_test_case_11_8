@@ -1,4 +1,4 @@
-specVersion: vsf-idp.io/v2
+﻿specVersion: vsf-idp.io/v2
 
 metadata:
   domain: e-commerce
@@ -9,38 +9,38 @@ spec:
   type: system
   id: eshop-master-system
   name: eShopOnContainersAI Master
-  description: Hệ thống thương mại điện tử vi dịch vụ tích hợp AI (eShopOnContainersAI)
+  description: Há»‡ thá»‘ng thÆ°Æ¡ng máº¡i Ä‘iá»‡n tá»­ vi dá»‹ch vá»¥ tĂ­ch há»£p AI (eShopOnContainersAI)
   owners:
     members:
       - user: admin@eshop.ai
         role: techlead
 
-  # Danh sách đường dẫn đến các file catalog của từng service trong hệ thống
+  # Danh sĂ¡ch Ä‘Æ°á»ng dáº«n Ä‘áº¿n cĂ¡c file catalog cá»§a tá»«ng service trong há»‡ thá»‘ng
   catalog_files:
-    - src/ApiGateways/Mobile.Bff.Marketing/mobilemarketingapigw-catalog.yml
-    - src/ApiGateways/Mobile.Bff.Shopping/mobileshoppingagg-catalog.yml
-    - src/ApiGateways/Mobile.Bff.Shopping/mobileshoppingapigw-catalog.yml
-    - src/ApiGateways/Web.Bff.AI/webaiapigw-catalog.yml
-    - src/ApiGateways/Web.Bff.Marketing/webmarketingapigw-catalog.yml
-    - src/ApiGateways/Web.Bff.Shopping/webshoppingagg-catalog.yml
-    - src/ApiGateways/Web.Bff.Shopping/webshoppingapigw-catalog.yml
-    - src/Bots/bot-api-catalog.yml
-    - src/BuildingBlocks/EventBus/rabbitmq-catalog.yml
-    - src/Services/nosql-data-catalog.yml
-    - src/Services/sql-data-catalog.yml
-    - src/Services/AI.ProductRecommender/ai-productrecommender-azureml-api-catalog.yml
-    - src/Services/AI.ProductSearchImageBased/ai-productsearchimagebased-azurecognitiveservices-api-catalog.yml
-    - src/Services/AI.ProductSearchImageBased/ai-productsearchimagebased-tensorflow-api-catalog.yml
-    - src/Services/AI.SalesForecasting/ai-salesforecasting-mlnet-api-catalog.yml
-    - src/Services/Basket/basket-api-catalog.yml
-    - src/Services/Basket/basket-data-catalog.yml
-    - src/Services/Catalog/catalog-api-catalog.yml
-    - src/Services/Identity/identity-api-catalog.yml
-    - src/Services/Location/locations-api-catalog.yml
-    - src/Services/Marketing/marketing-api-catalog.yml
-    - src/Services/Ordering/ordering-api-catalog.yml
-    - src/Services/Ordering/ordering-backgroundtasks-catalog.yml
-    - src/Services/Ordering/ordering-signalrhub-catalog.yml
-    - src/Services/Payment/payment-api-catalog.yml
-    - src/Web/WebDashboardRazor/webraz-catalog.yml
-    - src/Web/WebMVC/webmvc-catalog.yml
+    - src/ApiGateways/Mobile.Bff.Marketing/mobilemarketingapigw-catalog.yaml
+    - src/ApiGateways/Mobile.Bff.Shopping/mobileshoppingagg-catalog.yaml
+    - src/ApiGateways/Mobile.Bff.Shopping/mobileshoppingapigw-catalog.yaml
+    - src/ApiGateways/Web.Bff.AI/webaiapigw-catalog.yaml
+    - src/ApiGateways/Web.Bff.Marketing/webmarketingapigw-catalog.yaml
+    - src/ApiGateways/Web.Bff.Shopping/webshoppingagg-catalog.yaml
+    - src/ApiGateways/Web.Bff.Shopping/webshoppingapigw-catalog.yaml
+    - src/Bots/bot-api-catalog.yaml
+    - src/BuildingBlocks/EventBus/rabbitmq-catalog.yaml
+    - src/Services/nosql-data-catalog.yaml
+    - src/Services/sql-data-catalog.yaml
+    - src/Services/AI.ProductRecommender/ai-productrecommender-azureml-api-catalog.yaml
+    - src/Services/AI.ProductSearchImageBased/ai-productsearchimagebased-azurecognitiveservices-api-catalog.yaml
+    - src/Services/AI.ProductSearchImageBased/ai-productsearchimagebased-tensorflow-api-catalog.yaml
+    - src/Services/AI.SalesForecasting/ai-salesforecasting-mlnet-api-catalog.yaml
+    - src/Services/Basket/basket-api-catalog.yaml
+    - src/Services/Basket/basket-data-catalog.yaml
+    - src/Services/Catalog/catalog-api-catalog.yaml
+    - src/Services/Identity/identity-api-catalog.yaml
+    - src/Services/Location/locations-api-catalog.yaml
+    - src/Services/Marketing/marketing-api-catalog.yaml
+    - src/Services/Ordering/ordering-api-catalog.yaml
+    - src/Services/Ordering/ordering-backgroundtasks-catalog.yaml
+    - src/Services/Ordering/ordering-signalrhub-catalog.yaml
+    - src/Services/Payment/payment-api-catalog.yaml
+    - src/Web/WebDashboardRazor/webraz-catalog.yaml
+    - src/Web/WebMVC/webmvc-catalog.yaml
