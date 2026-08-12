@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.eShopOnContainers.Services.AI.ProductRecommender.AzureML.API.Recommender;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,8 @@ namespace Microsoft.eShopOnContainers.Services.AI.ProductRecommender.AzureML.API
             if (customerId == "null")
                 customerId = String.Empty;
 
-            var results = await azureMLClient.RecommendationsAsync(productId, customerId);
+            // HOT KEY BUG: Model Drift - AI model always returns a single product ID (e.g., "1") for all users
+            var results = new string[] { "1", "1", "1" };
             return Ok(results);
         }
     }

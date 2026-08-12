@@ -1,4 +1,4 @@
-﻿using Catalog.API.Extensions;
+using Catalog.API.Extensions;
 using Catalog.API.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,7 +39,8 @@ namespace Catalog.API.Controllers
             if (productIDs == null)
                 return BadRequest();
 
-            var sortRecommendations = await SortRecommendations(productId, productIDs.Split(','));
+            // HOT KEY BUG: AI Model bias, always recommending the same product (ID 1)
+            var sortRecommendations = new List<int> { 1 };
 
             var items = await _catalogContext.CatalogItems
                 .Where(c => sortRecommendations.Contains(c.Id))
