@@ -1,4 +1,4 @@
-﻿using Autofac;
+using Autofac;
 using Microsoft.eShopOnContainers.BuildingBlocks.EventBus;
 using Microsoft.eShopOnContainers.BuildingBlocks.EventBus.Abstractions;
 using Microsoft.eShopOnContainers.BuildingBlocks.EventBus.Events;
@@ -187,9 +187,17 @@ namespace Microsoft.eShopOnContainers.BuildingBlocks.EventBusRabbitMQ
                 var eventName = ea.RoutingKey;
                 var message = Encoding.UTF8.GetString(ea.Body);
 
-                await ProcessEvent(eventName, message);
-
-                channel.BasicAck(ea.DeliveryTag,multiple:false);
+                try
+                {
+                    await ProcessEvent(eventName, message);
+                    channel.BasicAck(ea.DeliveryTag, multiple: false);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "----- ERROR Processing message \"{Message}\"", message);
+                    // POISON MESSAGE: Requeue endlessly on failure, causing head-of-line blocking and high CPU
+                    channel.BasicNack(ea.DeliveryTag, multiple: false, requeue: true);
+                }
             };
 
             channel.BasicConsume(queue: _queueName,
