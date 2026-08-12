@@ -1,4 +1,4 @@
-﻿using Autofac;
+using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -44,12 +44,22 @@ namespace Ordering.SignalrHub
             if (Configuration.GetValue<string>("IsClusterEnv") == bool.TrueString)
             {
                 services
-                    .AddSignalR()
+                    .AddSignalR(options =>
+                    {
+                        // WEBSOCKET LEAK BUG: Never timeout idle or half-open connections
+                        options.ClientTimeoutInterval = TimeSpan.FromDays(365);
+                        options.KeepAliveInterval = TimeSpan.FromDays(365);
+                    })
                     .AddRedis(Configuration["SignalrStoreConnectionString"]);
             }
             else
             {
-                services.AddSignalR();
+                services.AddSignalR(options =>
+                {
+                    // WEBSOCKET LEAK BUG: Never timeout idle or half-open connections
+                    options.ClientTimeoutInterval = TimeSpan.FromDays(365);
+                    options.KeepAliveInterval = TimeSpan.FromDays(365);
+                });
             }
 
             if (Configuration.GetValue<bool>("AzureServiceBusEnabled"))
