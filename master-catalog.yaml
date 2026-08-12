@@ -1,29 +1,46 @@
-catalog_files:
-  - src/ApiGateways/Mobile.Bff.Marketing/mobilemarketingapigw-catalog.yml
-  - src/ApiGateways/Mobile.Bff.Shopping/mobileshoppingagg-catalog.yml
-  - src/ApiGateways/Mobile.Bff.Shopping/mobileshoppingapigw-catalog.yml
-  - src/ApiGateways/Web.Bff.AI/webaiapigw-catalog.yml
-  - src/ApiGateways/Web.Bff.Marketing/webmarketingapigw-catalog.yml
-  - src/ApiGateways/Web.Bff.Shopping/webshoppingagg-catalog.yml
-  - src/ApiGateways/Web.Bff.Shopping/webshoppingapigw-catalog.yml
-  - src/Bots/bot-api-catalog.yml
-  - src/BuildingBlocks/EventBus/rabbitmq-catalog.yml
-  - src/Services/nosql-data-catalog.yml
-  - src/Services/sql-data-catalog.yml
-  - src/Services/AI.ProductRecommender/ai-productrecommender-azureml-api-catalog.yml
-  - src/Services/AI.ProductSearchImageBased/ai-productsearchimagebased-azurecognitiveservices-api-catalog.yml
-  - src/Services/AI.ProductSearchImageBased/ai-productsearchimagebased-tensorflow-api-catalog.yml
-  - src/Services/AI.SalesForecasting/ai-salesforecasting-mlnet-api-catalog.yml
-  - src/Services/Basket/basket-api-catalog.yml
-  - src/Services/Basket/basket-data-catalog.yml
-  - src/Services/Catalog/catalog-api-catalog.yml
-  - src/Services/Identity/identity-api-catalog.yml
-  - src/Services/Location/locations-api-catalog.yml
-  - src/Services/Marketing/marketing-api-catalog.yml
-  - src/Services/Ordering/ordering-api-catalog.yml
-  - src/Services/Ordering/ordering-backgroundtasks-catalog.yml
-  - src/Services/Ordering/ordering-signalrhub-catalog.yml
-  - src/Services/Payment/payment-api-catalog.yml
-  - src/Web/WebDashboardRazor/webraz-catalog.yml
-  - src/Web/WebMVC/webmvc-catalog.yml
+specVersion: vsf-idp.io/v2
 
+metadata:
+  domain: e-commerce
+  system: eshop-ai
+  namespace: eshop
+
+spec:
+  type: system
+  id: eshop-master-system
+  name: eShopOnContainersAI Master
+  description: Hệ thống thương mại điện tử vi dịch vụ tích hợp AI (eShopOnContainersAI)
+  owners:
+    members:
+      - user: admin@eshop.ai
+        role: techlead
+
+  # Danh sách đường dẫn đến các file catalog của từng service trong hệ thống
+  catalog_files:
+    - src/ApiGateways/Mobile.Bff.Marketing/mobilemarketingapigw-catalog.yml
+    - src/ApiGateways/Mobile.Bff.Shopping/mobileshoppingagg-catalog.yml
+    - src/ApiGateways/Mobile.Bff.Shopping/mobileshoppingapigw-catalog.yml
+    - src/ApiGateways/Web.Bff.AI/webaiapigw-catalog.yml
+    - src/ApiGateways/Web.Bff.Marketing/webmarketingapigw-catalog.yml
+    - src/ApiGateways/Web.Bff.Shopping/webshoppingagg-catalog.yml
+    - src/ApiGateways/Web.Bff.Shopping/webshoppingapigw-catalog.yml
+    - src/Bots/bot-api-catalog.yml
+    - src/BuildingBlocks/EventBus/rabbitmq-catalog.yml
+    - src/Services/nosql-data-catalog.yml
+    - src/Services/sql-data-catalog.yml
+    - src/Services/AI.ProductRecommender/ai-productrecommender-azureml-api-catalog.yml
+    - src/Services/AI.ProductSearchImageBased/ai-productsearchimagebased-azurecognitiveservices-api-catalog.yml
+    - src/Services/AI.ProductSearchImageBased/ai-productsearchimagebased-tensorflow-api-catalog.yml
+    - src/Services/AI.SalesForecasting/ai-salesforecasting-mlnet-api-catalog.yml
+    - src/Services/Basket/basket-api-catalog.yml
+    - src/Services/Basket/basket-data-catalog.yml
+    - src/Services/Catalog/catalog-api-catalog.yml
+    - src/Services/Identity/identity-api-catalog.yml
+    - src/Services/Location/locations-api-catalog.yml
+    - src/Services/Marketing/marketing-api-catalog.yml
+    - src/Services/Ordering/ordering-api-catalog.yml
+    - src/Services/Ordering/ordering-backgroundtasks-catalog.yml
+    - src/Services/Ordering/ordering-signalrhub-catalog.yml
+    - src/Services/Payment/payment-api-catalog.yml
+    - src/Web/WebDashboardRazor/webraz-catalog.yml
+    - src/Web/WebMVC/webmvc-catalog.yml
