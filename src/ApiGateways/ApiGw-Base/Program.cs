@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +15,10 @@ namespace OcelotApiGw
     {
         public static void Main(string[] args)
         {
+            // THREAD POOL EXHAUSTION BUG: Limit max threads so thread starvation happens easily
+            System.Threading.ThreadPool.SetMaxThreads(10, 10);
+            System.Threading.ThreadPool.SetMinThreads(1, 1);
+
             BuildWebHost(args).Run();
         }
 

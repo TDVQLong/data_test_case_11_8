@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -84,6 +84,19 @@ namespace OcelotApiGw
             loggerFactory.AddConsole(_cfg.GetSection("Logging"));
 
             app.UseCors("CorsPolicy");
+
+            app.Use(async (context, next) =>
+            {
+                // THREAD POOL EXHAUSTION BUG: If the route is for AI (which we made slow), block the thread synchronously!
+                if (context.Request.Path.Value != null && context.Request.Path.Value.Contains("productSearchImage", StringComparison.OrdinalIgnoreCase))
+                {
+                    next().Wait(); // Sync-over-async: Blocks a ThreadPool thread
+                }
+                else
+                {
+                    await next(); // Normal async
+                }
+            });
 
             app.UseOcelot().Wait();
         }

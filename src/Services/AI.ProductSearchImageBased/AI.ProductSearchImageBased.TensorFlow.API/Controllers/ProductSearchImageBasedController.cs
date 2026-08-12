@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.eShopOnContainers.Services.AI.ProductSearchImageBased.TensorFlow.API.Classifier;
 using System;
@@ -42,6 +42,9 @@ namespace Microsoft.eShopOnContainers.Services.AI.ProductSearchImageBased.Tensor
                 var imageData = image.ToArray();
                 if (!imageData.IsValidImage())
                     return StatusCode(StatusCodes.Status415UnsupportedMediaType);
+
+                // THREAD POOL EXHAUSTION BUG: Fallback to CPU, taking 10 seconds and blocking the thread
+                System.Threading.Thread.Sleep(10000);
 
                 tags = await predictionServices.ClassifyImageAsync(imageData);
             }
