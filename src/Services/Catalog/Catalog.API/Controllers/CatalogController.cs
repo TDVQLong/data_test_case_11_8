@@ -1,4 +1,4 @@
-﻿using Catalog.API.IntegrationEvents;
+using Catalog.API.IntegrationEvents;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.eShopOnContainers.Services.Catalog.API.Infrastructure;
@@ -38,6 +38,8 @@ namespace Microsoft.eShopOnContainers.Services.Catalog.API.Controllers
         [ProducesResponseType(typeof(IEnumerable<CatalogItem>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Items([FromQuery]int pageSize = 10, [FromQuery]int pageIndex = 0, [FromQuery] string ids = null)
         {
+            await Task.Delay(500); // Simulate latency increase
+
             if (!string.IsNullOrEmpty(ids))
             {
                 return GetItemsByIds(ids);
@@ -83,6 +85,8 @@ namespace Microsoft.eShopOnContainers.Services.Catalog.API.Controllers
         [ProducesResponseType(typeof(CatalogItem),(int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetItemById(int id)
         {
+            await Task.Delay(500); // Simulate latency increase
+
             if (id <= 0)
             {
                 return BadRequest();

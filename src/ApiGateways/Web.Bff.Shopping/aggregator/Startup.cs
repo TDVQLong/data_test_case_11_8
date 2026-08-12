@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -158,6 +158,7 @@ namespace Microsoft.eShopOnContainers.Web.Shopping.HttpAggregator
 
             services.AddHttpClient<ICatalogService, CatalogService>()
                 .AddPolicyHandler(GetRetryPolicy())
+                .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromMilliseconds(200)))
                 .AddPolicyHandler(GetCircuitBreakerPolicy());
 
             services.AddHttpClient<IOrderApiClient, OrderApiClient>()
@@ -174,7 +175,8 @@ namespace Microsoft.eShopOnContainers.Web.Shopping.HttpAggregator
             return HttpPolicyExtensions
               .HandleTransientHttpError()
               .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.NotFound)
-              .WaitAndRetryAsync(6, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+              .Or<TimeoutRejectedException>()
+              .WaitAndRetryAsync(10, retryAttempt => TimeSpan.Zero);
 
         }
         static IAsyncPolicy<HttpResponseMessage> GetCircuitBreakerPolicy()
